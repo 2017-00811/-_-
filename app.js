@@ -52,10 +52,12 @@ function unique(arr) {
   return result;
 }
 
+// Выводим уникальные значения из 1 файла
 readAndTransformFile(filePath).then((data) => {
   console.log(data);
 });
 
+// Выводим уникальные значения из 2 файла
 readAndTransformFile(filePath2).then((data) => {
   console.log(data);
 });
