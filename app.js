@@ -8,12 +8,10 @@ const { promises: fsPromises } = require("fs");
 // Главная функция. Читаем и изменяем файл
 async function readAndTransformFile(filePath) {
   try {
-    const randomArr = [];
     const data = await fsPromises.readFile(filePath, "utf8");
-    let sort = sepearateArrays(data);
-    let sort2 = sepearateElements(sort);
-    let sort3 = unique(sort2);
-    return sort3;
+    let sort = sepearateElements(data);
+    let sort1 = unique(sort);
+    return sort1;
   } catch (err) {
     console.error(err);
   }
@@ -21,25 +19,18 @@ async function readAndTransformFile(filePath) {
 readAndTransformFile(filePath);
 
 // Разделяет элементы
-function sepearateArrays(arr) {
-  let arr1 = [];
-  arr1 = arr.split(" ");
-  let result = [].concat.apply([], arr1);
-  return result;
-}
-// Разделяет элементы на отдельные части
 function sepearateElements(arr) {
+  let arr1 = [];
   let tempArr = [];
-  let tempArr1 = [];
-  tempArr = arr.join().split(",");
-  for (let i = 0; i < tempArr.length; i++) {
+  arr1 = arr.split(" ");
+  let result = [].concat.apply([], arr1).join().split(",");
+  for (let i = 0; i < result.length; i++) {
     let a;
-    a = tempArr[i].replace(/[\D]+/g, "");
-    tempArr1.push(a);
+    a = result[i].replace(/[\D]+/g, "");
+    tempArr.push(a);
   }
-  return tempArr1;
+  return tempArr;
 }
-
 // Оставляет уникальные значения
 function unique(arr) {
   let result = [];
