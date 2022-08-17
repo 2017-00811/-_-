@@ -9,9 +9,9 @@ const { promises: fsPromises } = require("fs");
 async function readAndTransformFile(filePath) {
   try {
     const data = await fsPromises.readFile(filePath, "utf8");
-    let sort = sepearateElements(data);
-    let sort1 = unique(sort);
-    return sort1;
+    let separatedElementsArr = separateElements(data);
+    let uniqueElementsArray = unique(separatedElementsArr);
+    return uniqueElementsArray;
   } catch (err) {
     console.error(err);
   }
@@ -19,7 +19,7 @@ async function readAndTransformFile(filePath) {
 readAndTransformFile(filePath);
 
 // Разделяет элементы
-function sepearateElements(arr) {
+function separateElements(arr) {
   let arr1 = [];
   let tempArr = [];
   arr1 = arr.split(" ");
