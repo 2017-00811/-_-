@@ -44,11 +44,15 @@ function unique(arr) {
 }
 
 // Выводим уникальные значения из 1 файла
-readAndTransformFile(filePath).then((data) => {
-  console.log(data);
-});
+readAndTransformFile(filePath)
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((err) => console.error(err));
 
 // Выводим уникальные значения из 2 файла
-readAndTransformFile(filePath2).then((data) => {
-  console.log(data);
-});
+readAndTransformFile(filePath2)
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((err) => console.error(err));
